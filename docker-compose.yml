@@ -1,0 +1,33 @@
+version: '3.8'
+services:
+  application:
+    build: ./src
+    container_name: application
+    ports:
+      - '4000:4000'
+    volumes:
+      - ./src:/app
+      - ./src/app/node_modules
+    depends_on:
+      database:
+        condition: service_healthy
+    environment:
+      - DATABASE_URL=postgres://postgres:qwerty@database:5432/ParserRssDB
+  database:
+    image: postgres
+    container_name: database
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: qwerty
+      POSTGRES_DB: ParserRssDB
+    ports:
+      - 5432:5432
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -h database -U postgres"]
+      interval: 5s
+      timeout: 10s
+      retries: 5
+    

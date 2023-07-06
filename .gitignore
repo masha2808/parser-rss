@@ -1,0 +1,9 @@
+# Ignore compiled output and dependencies
+node_modules/
+build/
+
+# Ignore environment variables file
+/src/.env
+
+# Ignore PostgreSQL data directory
+pgdata/

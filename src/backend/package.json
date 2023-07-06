@@ -1,0 +1,15 @@
+{
+  "name": "parser-rss-backend",
+  "version": "1.0.0",
+  "description": "",
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "joi": "^17.9.2",
+    "jsonwebtoken": "^9.0.0",
+    "pg": "^8.11.1",
+    "rss-parser": "^3.13.0",
+    "sequelize": "^6.32.1"
+  }
+}
